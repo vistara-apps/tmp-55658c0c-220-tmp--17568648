@@ -6,10 +6,64 @@
   body {
     @apply bg-bg text-black;
   }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+  
+  a {
+    @apply text-primary;
+  }
+  
+  button {
+    @apply transition-colors duration-base;
+  }
 }
 
 @layer components {
   .container {
     @apply max-w-screen-xl mx-auto px-4;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90;
+  }
+  
+  .btn-secondary {
+    @apply bg-accent text-white px-4 py-2 rounded-md hover:bg-accent/90;
+  }
+  
+  .btn-outline {
+    @apply border border-primary text-primary px-4 py-2 rounded-md hover:bg-primary/10;
+  }
+  
+  .card {
+    @apply bg-surface p-4 rounded-lg shadow-card;
+  }
+}
+
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .scale-102 {
+    transform: scale(1.02);
+  }
+  
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
