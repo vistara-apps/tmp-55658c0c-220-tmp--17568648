@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
-import { useMiniKit } from '@coinbase/onchainkit/minikit';
 import AppHeader from '@/components/AppHeader';
 import RecommendationCard from '@/components/RecommendationCard';
 import InteractiveMap from '@/components/InteractiveMap';
 import VibeTag from '@/components/VibeTag';
 import { ConnectWallet } from '@coinbase/onchainkit/wallet';
 import { getRecommendations } from '@/actions/getRecommendations';
+import dynamic from 'next/dynamic';
 
 interface Recommendation {
   recommendationId: string;
@@ -24,16 +24,18 @@ interface Recommendation {
   timestamp: string;
 }
 
+// Dynamically import the page component with ssr: false to prevent server-side rendering
+const HomePage = dynamic(() => Promise.resolve(HomePageContent), { ssr: false });
+
 export default function Home() {
+  return <HomePage />;
+}
+
+function HomePageContent() {
   const { address, isConnected } = useAccount();
-  const { setFrameReady } = useMiniKit();
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
   const [loading, setLoading] = useState(false);
   const [userPreferences, setUserPreferences] = useState<string[]>([]);
-
-  useEffect(() => {
-    setFrameReady();
-  }, [setFrameReady]);
 
   useEffect(() => {
     if (isConnected) {
@@ -97,3 +99,4 @@ export default function Home() {
     </div>
   );
 }
+
