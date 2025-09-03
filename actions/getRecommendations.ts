@@ -5,7 +5,6 @@ import OpenAI from 'openai';
 const openai = new OpenAI({
   apiKey: process.env.OPENROUTER_API_KEY || '',
   baseURL: "https://openrouter.ai/api/v1",
-  dangerouslyAllowBrowser: true,
 });
 
 export async function getRecommendations(location: string, preferences: string[]) {
@@ -46,5 +45,56 @@ const mockRecommendations = [
     video_url: 'https://example.com/video.mp4',
     timestamp: '2024-08-30'
   },
-  // Add more mocks as needed
+  {
+    recommendationId: '2',
+    title: 'Energetic Dance Club',
+    description: 'Popular nightclub with amazing DJs and dance floor.',
+    venue_name: 'Monarch',
+    location: { lat: 37.7816, lng: -122.4090 },
+    social_media_url: 'https://instagram.com/monarchsf',
+    trend_score: 92,
+    vibe_tags: ['Energetic', 'Nightlife'],
+    image_url: 'https://via.placeholder.com/400x300?text=Club',
+    video_url: 'https://example.com/video2.mp4',
+    timestamp: '2024-08-29'
+  },
+  {
+    recommendationId: '3',
+    title: 'Romantic Dinner Spot',
+    description: 'Elegant restaurant with intimate atmosphere and excellent cuisine.',
+    venue_name: 'Foreign Cinema',
+    location: { lat: 37.7561, lng: -122.4186 },
+    social_media_url: 'https://instagram.com/foreigncinemasf',
+    trend_score: 78,
+    vibe_tags: ['Romantic', 'Dining'],
+    image_url: 'https://via.placeholder.com/400x300?text=Restaurant',
+    video_url: 'https://example.com/video3.mp4',
+    timestamp: '2024-08-28'
+  },
+  {
+    recommendationId: '4',
+    title: 'Adventurous Hiking Trail',
+    description: 'Scenic trail with breathtaking views of the city and bay.',
+    venue_name: 'Lands End Trail',
+    location: { lat: 37.7825, lng: -122.5097 },
+    social_media_url: 'https://instagram.com/goldengatenps',
+    trend_score: 88,
+    vibe_tags: ['Adventurous', 'Outdoors'],
+    image_url: 'https://via.placeholder.com/400x300?text=Hiking',
+    video_url: 'https://example.com/video4.mp4',
+    timestamp: '2024-08-27'
+  },
+  {
+    recommendationId: '5',
+    title: 'Chill Rooftop Bar',
+    description: 'Relaxed rooftop venue with craft cocktails and city views.',
+    venue_name: 'Charmaine\'s',
+    location: { lat: 37.7821, lng: -122.4090 },
+    social_media_url: 'https://instagram.com/charmainessf',
+    trend_score: 90,
+    vibe_tags: ['Chill', 'Nightlife'],
+    image_url: 'https://via.placeholder.com/400x300?text=Rooftop',
+    video_url: 'https://example.com/video5.mp4',
+    timestamp: '2024-08-26'
+  }
 ];
